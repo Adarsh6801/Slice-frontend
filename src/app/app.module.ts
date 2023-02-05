@@ -7,6 +7,8 @@ import { UserAuthModule } from './user-auth/user-auth.module';
 import { AdminAuthModule } from './admin-auth/admin-auth.module';
 import { AdminModule } from './admin/admin.module';
 import { UserModule } from './user/user.module';
+import { FormsModule } from '@angular/forms';
+
 
 @NgModule({
   declarations: [
@@ -18,7 +20,8 @@ import { UserModule } from './user/user.module';
     UserAuthModule,
     AdminAuthModule,
     AdminModule,
-    UserModule
+    UserModule,
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

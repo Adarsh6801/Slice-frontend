@@ -1,1 +1,40 @@
-<p>register works!</p>
+
+<div class="text-center">
+    <section class="text-center">
+        <h2 style="color: #ff0808;">Slice</h2>
+        <h2 class="title">Sign up</h2>
+        <p class="text-danger ">{{message}}</p>
+        <form (submit)="onSubmit(form)" #form="ngForm" >
+            <label for="username">First Name</label>
+            <input type="text" name="firstName" required #firstName="ngModel" ngModel>
+            <label for="" class="text-danger" *ngIf="form.submitted&&firstName.errors?.['required']">first name is required</label>
+
+            <label for="username">Last Name</label>
+            <input type="text" name="lastName" ngModel #lastName="ngModel" required>
+            <label for="" class="text-danger" *ngIf="form.submitted&&lastName.errors?.['required']">last name is required</label>
+
+            <label for="username">Email</label>
+            <input type="email" name="email" ngModel #email="ngModel" required>
+            <label for="" class="text-danger" *ngIf="form.submitted&&email.errors?.['required']">email name is required</label>
+
+            <label for="password">password</label>
+            <input type="text" name="password" name="password" ngModel #password="ngModel" required>
+            <label for="" class="text-danger" *ngIf="form.submitted&&password.errors?.['required']">password name is required</label>
+
+           
+
+            <button class="btn" type="submit" >Signup</button>
+            <div>
+                
+                
+                <a href="#" target="_blank" rel="noopener" [routerLink]="['/userLogin']" routerLinkActive="router-link-active" >Aleady have a account?</a>
+            </div>
+
+        </form>
+    </section>
+</div>
+
+
+
+
+
