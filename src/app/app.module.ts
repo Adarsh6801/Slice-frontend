@@ -8,6 +8,8 @@ import { AdminAuthModule } from './admin-auth/admin-auth.module';
 import { AdminModule } from './admin/admin.module';
 import { UserModule } from './user/user.module';
 import { FormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatSidenavModule} from '@angular/material/sidenav';
 
 
 @NgModule({
@@ -22,6 +24,8 @@ import { FormsModule } from '@angular/forms';
     AdminModule,
     UserModule,
     FormsModule,
+    BrowserAnimationsModule,
+    MatSidenavModule
   ],
   providers: [],
   bootstrap: [AppComponent]

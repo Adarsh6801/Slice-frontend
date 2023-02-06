@@ -1,1 +1,25 @@
-<p>login works!</p>
+<div class="text-center">
+    <section class="text-center">
+        <h2 class="title">Admin LogIn</h2>
+        <form (submit)="onSubmit(form)" #form="ngForm">
+            <label for="username">Email</label>
+            <!-- <label for="" class="text-danger">{{emessage}}</label> -->
+            <input type="email" name="email" #email="ngModel" ngModel  required>
+            <label for="" class="text-danger" *ngIf="form.submitted&&email.errors?.['required']">Email is required</label>
+            
+
+            <label for="password">password</label>
+            <!-- <label for="" class="text-danger">{{pmessage}}</label> -->
+            <input type="password" name="password" required #password="ngModel" ngModel>
+            <label for="" class="text-danger" *ngIf="form.submitted&&password.errors?.['required']">Password is required</label>
+            <!-- <label for="" class="text-danger">{{message}}</label> -->
+            <button class="#" type="submit">login</button>
+            <div>
+                <!-- <a href="#" target="_blank" rel="noopener">forgot password</a> -->
+               
+                <a href="#" target="_blank" rel="noopener" [routerLink]="['/userRegister']" routerLinkActive="router-link-active" >Create a Account ?</a>
+            </div>
+
+        </form>
+    </section>
+</div>

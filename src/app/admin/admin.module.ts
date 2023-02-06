@@ -1,11 +1,13 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import {MatSidenavModule} from '@angular/material/sidenav';
 
 import { AdminRoutingModule } from './admin-routing.module';
 import { AdminHomeComponent } from './admin-home/admin-home.component';
 import { DashBoardComponent } from './dash-board/dash-board.component';
 import { AllUserComponent } from './all-user/all-user.component';
 import { AdminComponent } from './admin.component';
+import { AdminIntroComponent } from './admin-intro/admin-intro.component';
 
 
 @NgModule({
@@ -13,11 +15,13 @@ import { AdminComponent } from './admin.component';
     AdminHomeComponent,
     DashBoardComponent,
     AllUserComponent,
-    AdminComponent
+    AdminComponent,
+    AdminIntroComponent,
   ],
   imports: [
     CommonModule,
-    AdminRoutingModule
+    AdminRoutingModule,
+    MatSidenavModule
   ]
 })
 export class AdminModule { }
