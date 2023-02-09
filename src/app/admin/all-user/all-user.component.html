@@ -17,94 +17,25 @@
             <td></td>
           </tr>
         </thead>
-        <tbody>
+        
+        <tbody *ngFor=" let user of allUsers">
 
           <tr>
      
-            <td>Martin Blank</td>
-            <td>martinblank@mail.com</td>
-            <td>Via Monte Bianco 34, Turin, Italy</td>
+            <td>{{user.firstName}}</td>
+            <td>{{user.lastName}}</td>
+            <td>{{user.email}}</td>
     
             <td>
-                <a href="#deleteEmployeeModal" class="delete btn " data-bs-toggle="modal" data-bs-target="#staticBackdrop"><i class="material-icons" data-toggle="tooltip" title="Block">&#xE14B;</i></a>
-              <a href="#editEmployeeModal" class="edit btn" data-bs-toggle="modal" data-bs-target="#edit"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
-              <a href="#deleteEmployeeModal" class="delete btn" data-bs-toggle="modal" data-bs-target="#delete"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
+                <a href="#deleteEmployeeModal" class="delete btn " data-bs-toggle="modal" data-bs-target="#staticBackdrop" *ngIf="user.status"  (click)="block(user._id)" ><i class="material-icons" data-toggle="tooltip" title="Block">&#xE14B;</i></a>
+                <a href="#deleteEmployeeModal" class="btn-success btn " data-bs-toggle="modal" data-bs-target="#staticBackdrop" *ngIf="!user.status"  (click)="unblock(user._id)" ><i class="material-icons" data-toggle="tooltip" title="Block"></i>UnBlock</a>
+
+              <a href="#deleteEmployeeModal" class="delete btn" data-bs-toggle="modal" data-bs-target="#delete"><i class="material-icons" data-toggle="tooltip" title="Delete"  (click)="delete(user._id)">&#xE872;</i></a>
               
             </td>
             <td></td>
           </tr>
         </tbody>
       </table>
-    </div>
-  </div>
-
-
-<!--block  Modal -->
-<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h1 class="modal-title fs-5" id="staticBackdropLabel">Delete</h1>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-         <form action="">
-            <label for="">Enter the email of the user to Block |"email"|</label>
-            <input type="email">
-            <button type="submit" class="btn btn-danger">Block</button>
-         </form>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        </div>
-      </div>
-    </div>
-  </div>
-
-<!-- Edit Modal HTML -->
- <div class="modal fade" id="edit" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h1 class="modal-title fs-5" id="staticBackdropLabel">Delete</h1>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-         <form action="">
-            <label  for="">first Name</label>
-            <input class="form-control" type="text" value="adarsh">
-            <label   for="">Last Name</label>
-            <input class="form-control"  type="text" value="kp">
-            <label for="">Email</label>
-            <input class="form-control"  type="email" value="adf@gmail.com">
-            <button type="submit" class="btn btn-danger">Save changes</button>
-         </form>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Delete Modal -->
-  <div class="modal fade" id="delete" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h1 class="modal-title fs-5" id="staticBackdropLabel">Delete</h1>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-         <form action="">
-            <label for="">Enter "Delete" to Delete</label>
-            <input type="text">
-            <button type="submit" class="btn btn-danger">Delete</button>
-         </form>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        </div>
-      </div>
     </div>
   </div>

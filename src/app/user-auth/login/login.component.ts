@@ -10,6 +10,8 @@ import { UserAuthServiceService } from 'src/app/services/user-auth-service.servi
 export class LoginComponent {
   constructor(private userService : UserAuthServiceService){}
   onSubmit(data:NgForm){
+    console.log(data.value);
+    
     this.userService.userLogin(data.value)
   }
 }

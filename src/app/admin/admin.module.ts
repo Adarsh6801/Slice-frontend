@@ -21,7 +21,7 @@ import { AdminIntroComponent } from './admin-intro/admin-intro.component';
   imports: [
     CommonModule,
     AdminRoutingModule,
-    MatSidenavModule
+    MatSidenavModule,
   ]
 })
 export class AdminModule { }

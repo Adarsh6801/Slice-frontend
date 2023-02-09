@@ -1,5 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { LoginComponent } from '../user-auth/login/login.component';
+import { RegisterComponent } from '../user-auth/register/register.component';
+import { UserAuthComponent } from '../user-auth/user-auth.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { UserIntroComponent } from './user-intro/user-intro.component';
@@ -9,8 +12,13 @@ const routes: Routes = [
   {path:'home',component:HomePageComponent},
   {path:'',component:UserIntroComponent},
   {path:'profile',component:UserProfileComponent},
-  {path:'nav',component:NavbarComponent}
+  {path:'nav',component:NavbarComponent},
+  {path:'user-auth',component:UserAuthComponent,children:[
+    {path:'login',component:LoginComponent},
+    {path:'register',component:RegisterComponent}
+  ]},
 ];
+
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
