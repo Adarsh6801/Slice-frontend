@@ -7,16 +7,17 @@
             <div class="card-body p-4">
               <div class="d-flex text-black">
                 <div class="flex-shrink-0">
-                  <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-profiles/avatar-1.webp"
+                  <img [src]="url"
                     alt="Generic placeholder image" class="img-fluid"
                     style="width: 180px; border-radius: 10px;">
                 </div>
                 <div class="flex-grow-1 ms-3">
-                  <h5 class="mb-1">"Name"</h5>
-                  <p class="mb-2 pb-1" style="color: #2b2a2a;">Senior Journalist</p>
-                  
+                  <h5 class="mb-1">{{userDetails.firstName}} {{userDetails.lastName}}</h5>
+                  <p class="mb-2 pb-1" style="color: #2b2a2a;">{{userDetails.email}}</p>
+                  <input type="file" #filePicker (change)="onImagePicked($event)">
                   <div class="d-flex pt-1">
-                    <button type="button" class="btn btn-outline-primary me-1 flex-grow-1">Edit Photo</button>
+                    <button type="button" class="btn btn-outline-primary me-1 flex-grow-1" (click)="filePicker.click()">Edit Photo</button>
+                   
                     <button type="button" class="btn btn-outline-primary flex-grow-1">Edit Account</button>
                   </div>
                 </div>

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { AdminAuthService } from 'src/app/services/admin-auth.service';
 import { Router } from '@angular/router';
@@ -8,11 +8,15 @@ import { Router } from '@angular/router';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit{
   pmessage:String=''
   emessage:String=''
   message:String=''
+  adminStatus:boolean=false;
   constructor(private adminService : AdminAuthService, private router: Router){}
+  ngOnInit(): void {
+   this.adminCheck()
+  }
   onSubmit(data: NgForm){
     console.log(data.value);
     this.adminService.adminLoginCheck(data.value).subscribe((data)=>{
@@ -26,8 +30,20 @@ export class LoginComponent {
         this.emessage=data.emessage;
       }
       if(data.adminVerify){
-        this.router.navigateByUrl('/admin/home')
+        
+        if(data.token){
+          localStorage.setItem('admin_token',data.token);
+          this.adminStatus=true;
+          this.router.navigateByUrl('/admin/home')
+        }
+        
       }
     })
+  }
+  adminCheck(){
+    let token=localStorage.getItem('admin_token')
+    if(token){
+      this.router.navigateByUrl('/admin/home')
+    }
   }
 }

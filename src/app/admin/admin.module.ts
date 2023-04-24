@@ -8,6 +8,7 @@ import { DashBoardComponent } from './dash-board/dash-board.component';
 import { AllUserComponent } from './all-user/all-user.component';
 import { AdminComponent } from './admin.component';
 import { AdminIntroComponent } from './admin-intro/admin-intro.component';
+import { SearchComponent } from './search/search.component';
 
 
 @NgModule({
@@ -17,6 +18,7 @@ import { AdminIntroComponent } from './admin-intro/admin-intro.component';
     AllUserComponent,
     AdminComponent,
     AdminIntroComponent,
+    SearchComponent,
   ],
   imports: [
     CommonModule,

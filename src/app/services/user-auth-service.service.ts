@@ -7,6 +7,7 @@ import { Router } from '@angular/router';
 })
 export class UserAuthServiceService {
   isAuthenticated:boolean=false;
+  token:string=""
   constructor(private http : HttpClient, private router: Router) { }
 
   regUser(data:any){
@@ -14,11 +15,11 @@ export class UserAuthServiceService {
   }
   userLogin(data:any){
     return this.http.post<any>('http://localhost:4111/user-login',data).subscribe((response)=>{
-      console.log(response);
+      console.log(response,"response");
       localStorage.setItem('id_token',response.token);
       if(response.token){
-        console.log('hiiii');
         
+        this.token=response.token
         this.isAuthenticated=true; 
         // this.isAuthListener.next(true); 
         this.router.navigateByUrl('/home');

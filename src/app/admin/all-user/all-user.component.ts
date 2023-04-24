@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AdminServiceService } from 'src/app/services/admin-service.service';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 @Component({
   selector: 'app-all-user',
   templateUrl: './all-user.component.html',
@@ -8,16 +8,27 @@ import { Router } from '@angular/router';
 })
 export class AllUserComponent implements OnInit {
   allUsers:any=[];
-  constructor(private adminService:AdminServiceService, private router: Router){}
+  fullUsers:any=[];
+  searchTerm:any;
+  constructor(private adminService:AdminServiceService, private router: Router, activatedRoute:ActivatedRoute){
+    activatedRoute.params.subscribe((params)=>{
+      if(params['searchTerm']){
+       this.searchTerm=params['searchTerm']
+        console.log(this.searchTerm,"searchTerm");
+      }
+      
+    })
+  }
   ngOnInit(): void {
+    this.loginCheck()
     this.userData();
   }
   userData(){
     this.adminService.adminviewUsers().subscribe((response)=>{
       console.log(response);
-      
+      this.fullUsers=response.allUsers
       this.allUsers=response.allUsers;
-      
+     
     })
   }
   block(status:String){
@@ -39,4 +50,11 @@ export class AllUserComponent implements OnInit {
 
     })
   }
+  loginCheck(){
+    let token=localStorage.getItem('admin_token')
+    if(!token){
+      this.router.navigateByUrl('/')
+    }
+}
+
 }

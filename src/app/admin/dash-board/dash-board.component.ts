@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-dash-board',
@@ -6,5 +7,13 @@ import { Component } from '@angular/core';
   styleUrls: ['./dash-board.component.css']
 })
 export class DashBoardComponent {
+@Input() name:string=''
+constructor(private router:Router){}
+
+adminLogout(){
+  localStorage.removeItem('admin_token');
+    this.router.navigateByUrl('')
+  
+}
 
 }
